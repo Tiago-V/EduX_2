@@ -24,7 +24,10 @@ namespace EduX_Proj.Controllers
             _dicaRepository = new DicaRepository();
         }
 
-        // GET: api/Dica
+        /// <summary>
+        /// Método que lista todas as dicas - controller
+        /// </summary>
+        /// <returns>Dicas</returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -45,7 +48,11 @@ namespace EduX_Proj.Controllers
             }
         }
 
-        // GET: api/Dica/5
+        /// <summary>
+        /// Método que busca uma dica a partir do seu id - controller
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Dica buscada</returns>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -66,9 +73,12 @@ namespace EduX_Proj.Controllers
             }
         }
 
-        // PUT: api/Dica/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /// <summary>
+        /// Método que altera uma dica já cadastrada - controller
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="dica"></param>
+        /// <returns>Dica alterada</returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, Dica dica)
         {
@@ -86,9 +96,11 @@ namespace EduX_Proj.Controllers
             }
         }
 
-        // POST: api/Dica
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /// <summary>
+        /// Método que cadastra uma nova dica no banco - controller
+        /// </summary>
+        /// <param name="dica"></param>
+        /// <returns>Dica cadastrada</returns>
         [HttpPost]
         public IActionResult Post([FromForm]Dica dica)
         {
@@ -113,7 +125,11 @@ namespace EduX_Proj.Controllers
             }
         }
 
-        // DELETE: api/Dica/5
+        /// <summary>
+        /// Remove uma dica já cadastrada no banco - controller
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Dica excluída</returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
