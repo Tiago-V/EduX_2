@@ -75,7 +75,7 @@ namespace EduX_Proj.Controllers
         /// <param name="t"> Turma </param>
         /// <returns> Status e Turma </returns>
         // POST: api/Turma/1
-        [HttpGet]
+        [HttpPost]
         public IActionResult Post(Turma t)
         {
             try
@@ -97,7 +97,7 @@ namespace EduX_Proj.Controllers
         /// <param name="t"> Turma </param>
         /// <returns> Status e Turma </returns>
         // PUT: api/Turma/1
-        [HttpGet("{id}")]
+        [HttpPut("{id}")]
         public IActionResult Put(int id, Turma t)
         {
             try
@@ -118,7 +118,7 @@ namespace EduX_Proj.Controllers
         /// <param name="id"> Id da turma que sera removido </param>
         /// <returns> Status </returns>
         // DELETE: api/Turma/1
-        [HttpGet("{id}")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             try

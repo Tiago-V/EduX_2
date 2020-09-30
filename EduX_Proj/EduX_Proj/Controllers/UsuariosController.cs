@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EduX_Proj.Contexts;
 using EduX_Proj.Domains;
 using EduX_Proj.Interfaces;
 using EduX_Proj.Repositories;
+using EduX_Proj.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +16,8 @@ namespace EduX_Proj.Controllers
     [ApiController]
     public class UsuariosController : ControllerBase
     {
+        private EduXContext _context = new EduXContext();
+
         private readonly IUsuario _usuario;
 
         public UsuariosController()
@@ -75,11 +79,14 @@ namespace EduX_Proj.Controllers
         /// <param name="u"> Usuario </param>
         /// <returns> Status e Usuario </returns>
         // POST: api/Usuario/1
-        [HttpGet]
+        [HttpPost]
         public IActionResult Post(Usuario u)
         {
             try
             {
+                // SALT = 3 primeiras letras do email
+                u.Senha = Crypto.Criptografar(u.Senha,  u.Email.Substring(0,3));
+
                 _usuario.Adicionar(u);
 
                 return Ok(u);
@@ -97,11 +104,14 @@ namespace EduX_Proj.Controllers
         /// <param name="u"> Usuario </param>
         /// <returns> Status e Usuario </returns>
         // PUT: api/Usuario/1
-        [HttpGet("{id}")]
+        [HttpPut("{id}")]
         public IActionResult Put(int id, Usuario u)
         {
             try
             {
+                // SALT = 3 primeiras letras do email
+                u.Senha = Crypto.Criptografar(u.Senha, u.Email.Substring(0, 3));
+
                 _usuario.Alterar(id, u);
 
                 return Ok(u);
@@ -118,7 +128,7 @@ namespace EduX_Proj.Controllers
         /// <param name="id"> Id do usuario que sera removido </param>
         /// <returns> Status </returns>
         // DELETE: api/Usuario/1
-        [HttpGet("{id}")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             try

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EduX_Proj.Contexts;
 using EduX_Proj.Domains;
+using EduX_Proj.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +32,9 @@ namespace EduX_Proj.Controllers
 
         private Usuario AutenticarUsuario(Usuario login)
         {
+            // SALT = 3 primeiras letras do email
+            login.Senha = Crypto.Criptografar(login.Senha, login.Email.Substring(0, 3));
+
             return _context.Usuario
                 .Include(a => a.IdPerfilNavigation)
                 .FirstOrDefault(u => u.Email == login.Email && u.Senha == login.Senha);
