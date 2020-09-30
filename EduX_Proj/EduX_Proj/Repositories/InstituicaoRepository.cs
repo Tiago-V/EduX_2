@@ -17,12 +17,21 @@ namespace EduX_Proj.Repositories
             _ctx = new EduXContext();
         }
 
+        /// <summary>
+        /// Adiciona uma nova instituição
+        /// </summary>
+        /// <param name="i"></param>
         public void Adicionar(Instituicao i)
         {
             _ctx.Instituicao.Add(i);
             _ctx.SaveChanges();
         }
 
+        /// <summary>
+        /// Altera uma instituição já cadastrada no banco a partir do seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="i"></param>
         public void Alterar(int id, Instituicao i)
         {
             try
@@ -47,6 +56,11 @@ namespace EduX_Proj.Repositories
             }
         }
 
+        /// <summary>
+        /// Busca uma instituição já cadastrada no banco a partir do seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Instituição buscada.</returns>
         public Instituicao BuscarPorID(int id)
         {
             try
@@ -59,6 +73,10 @@ namespace EduX_Proj.Repositories
             }
         }
 
+        /// <summary>
+        /// Busca todas as instituições cadastradas no banco.
+        /// </summary>
+        /// <returns>Todas as instituições</returns>
         public List<Instituicao> ListarTodos()
         {
             try
@@ -71,6 +89,10 @@ namespace EduX_Proj.Repositories
             }
         }
 
+        /// <summary>
+        /// Remove uma instituição a partir do seu id.
+        /// </summary>
+        /// <param name="id"></param>
         public void Remover(int id)
         {
             try

@@ -16,12 +16,22 @@ namespace EduX_Proj.Repositories
         {
             _ctx = new EduXContext();
         }
+
+        /// <summary>
+        /// Cadastra uma nova Categoria.
+        /// </summary>
+        /// <param name="cat"></param>
         public void Adicionar(Categoria cat)
         {
             _ctx.Categoria.Add(cat);
             _ctx.SaveChanges();
         }
 
+        /// <summary>
+        /// Altera uma categoria já criada no banco a partir do seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cat"></param>
         public void Alterar(Guid id, Categoria cat)
         {
             try
@@ -38,6 +48,11 @@ namespace EduX_Proj.Repositories
             }
         }
 
+        /// <summary>
+        /// Busca uma categoria a partir do seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Categoria buscada.</returns>
         public Categoria BuscarPorId(Guid id)
         {
             try
@@ -50,6 +65,10 @@ namespace EduX_Proj.Repositories
             }
         }
 
+        /// <summary>
+        /// Lista todas as categorias já cadastradas no banco.
+        /// </summary>
+        /// <returns>Todas as categorias cadastradas</returns>
         public List<Categoria> ListarTodos()
         {
             try
@@ -62,6 +81,10 @@ namespace EduX_Proj.Repositories
             }
         }
 
+        /// <summary>
+        /// Remove uma categoria do banco a partir do seu id
+        /// </summary>
+        /// <param name="id"></param>
         public void Remover(Guid id)
         {
             try

@@ -17,12 +17,21 @@ namespace EduX_Proj.Repositories
             _ctx = new EduXContext();
         }
 
+        /// <summary>
+        /// Adiciona um AlunoTurma.
+        /// </summary>
+        /// <param name="a"></param>
         public void Adicionar(AlunoTurma a)
         {
             _ctx.AlunoTurma.Add(a);
             _ctx.SaveChanges();
         }
 
+        /// <summary>
+        /// Altera um AlunoTurma a partir do seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="a"></param>
         public void Alterar(int id, AlunoTurma a)
         {
             try
@@ -41,6 +50,11 @@ namespace EduX_Proj.Repositories
          
         }
 
+        /// <summary>
+        /// Busca um AlunoTurma por seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public AlunoTurma BuscarPorID(int id)
         {
             try
@@ -53,6 +67,10 @@ namespace EduX_Proj.Repositories
             }
         }
 
+        /// <summary>
+        /// Lista todos os AlunoTurmas cadastrados no banco.
+        /// </summary>
+        /// <returns>AlunoTurmas Cadastrados</returns>
         public List<AlunoTurma> ListarTodos()
         {
             try
@@ -65,6 +83,10 @@ namespace EduX_Proj.Repositories
             }
         }
 
+        /// <summary>
+        /// Remove um aluno a partir do seu id.
+        /// </summary>
+        /// <param name="id"></param>
         public void Remover(int id)
         {
             try
