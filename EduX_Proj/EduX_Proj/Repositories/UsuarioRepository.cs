@@ -23,7 +23,7 @@ namespace EduX_Proj.Repositories
             _ctx.SaveChanges();
         }
 
-        public void Alterar(Guid id, Usuario u)
+        public void Alterar(int id, Usuario u)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace EduX_Proj.Repositories
             }
         }
 
-        public Usuario BuscarPorID(Guid id)
+        public Usuario BuscarPorID(int id)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace EduX_Proj.Repositories
             }
         }
 
-        public void Remover(Guid id)
+        public void Remover(int id)
         {
             try
             {
