@@ -9,6 +9,7 @@ using EduX_Proj.Contexts;
 using EduX_Proj.Domains;
 using EduX_Proj.Repositories;
 using System.IO;
+using EduX_Proj.Utils;
 
 namespace EduX_Proj.Controllers
 {
@@ -96,15 +97,9 @@ namespace EduX_Proj.Controllers
 
                 if(dica.Imagem != null)
                 {
-                    var nomeArquivo = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(dica.Imagem.FileName);
+                    var urlImagem = Upload.Local(dica.Imagem);
 
-                    var caminhoArquivo = Path.Combine(Directory.GetCurrentDirectory(), @"wwwRoot/upload/imagens", nomeArquivo);
-
-                    using var streamImagem = new FileStream(caminhoArquivo, FileMode.Create);
-
-                    dica.Imagem.CopyTo(streamImagem);
-
-                    dica.UrlImagem = "https://localhost:44355/upload/imagens" + nomeArquivo;
+                    dica.UrlImagem = urlImagem;
                 }
 
                 _dicaRepository.Cadastrar(dica);
