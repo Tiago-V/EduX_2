@@ -12,31 +12,31 @@ namespace EduX_Proj.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlunoTurmasController : ControllerBase
+    public class UsuariosController : ControllerBase
     {
-        private readonly IAlunoTurma _alunoTurma;
+        private readonly IUsuario _usuario;
 
-        public AlunoTurmasController()
+        public UsuariosController()
         {
-            _alunoTurma = new AlunoTurmaRepository();
+            _usuario = new UsuarioRepository();
         }
 
         /// <summary>
-        /// Listar todos os alunos
+        /// Listar todos os usuarios
         /// </summary>
-        /// <returns> Lista de alunos </returns>
-        //GET: api/AlunoTurma
+        /// <returns> Lista de usuarios </returns>
+        //GET: api/Usuario
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                var alunos = _alunoTurma.ListarTodos();
+                var usuarios = _usuario.ListarTodos();
 
-                if (alunos.Count == 0)
+                if (usuarios.Count == 0)
                     return NoContent();
 
-                return Ok(alunos);
+                return Ok(usuarios);
             }
             catch (Exception ex)
             {
@@ -45,22 +45,22 @@ namespace EduX_Proj.Controllers
         }
 
         /// <summary>
-        /// Buscar aluno pelo seu id
+        /// Buscar usuario pelo seu id
         /// </summary>
-        /// <param name="id"> Id do Aluno </param>
-        /// <returns> Aluno </returns>
-        // GET: api/AlunoTurma/1
+        /// <param name="id"> Id dao usuario </param>
+        /// <returns> Usuario </returns>
+        // GET: api/Usuario/1
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             try
             {
-                AlunoTurma aluno = _alunoTurma.BuscarPorID(id);
+                Usuario usuario = _usuario.BuscarPorID(id);
 
-                if (aluno == null)
+                if (usuario == null)
                     return NotFound();
 
-                return Ok(aluno);
+                return Ok(usuario);
             }
             catch (Exception ex)
             {
@@ -70,41 +70,19 @@ namespace EduX_Proj.Controllers
 
 
         /// <summary>
-        /// Adicionar um aluno
+        /// Adicionar um Usuario
         /// </summary>
-        /// <param name="a"> Aluno </param>
-        /// <returns> Status Ok e Aluno </returns>
-        // POST: api/AlunoTurma/1
+        /// <param name="u"> Usuario </param>
+        /// <returns> Status e Usuario </returns>
+        // POST: api/Usuario/1
         [HttpGet]
-        public IActionResult Post(AlunoTurma a)
+        public IActionResult Post(Usuario u)
         {
             try
             {
-                _alunoTurma.Adicionar(a);
+                _usuario.Adicionar(u);
 
-                return Ok(a);
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// Alterar os atributos de aluno
-        /// </summary>
-        /// <param name="id"> Id do aluno que terá seus atributos alterados </param>
-        /// <param name="a"> Aluno </param>
-        /// <returns> Status Ok e Aluno </returns>
-        // PUT: api/AlunoTurma/1
-        [HttpGet("{id}")]
-        public IActionResult Put(int id, AlunoTurma a)
-        {
-            try
-            {
-                _alunoTurma.Alterar(id, a);
-
-                return Ok(a);
+                return Ok(u);
             }
             catch (Exception ex)
             {
@@ -113,22 +91,44 @@ namespace EduX_Proj.Controllers
         }
 
         /// <summary>
-        /// Remover aluno
+        /// Alterar os atributos de um usuario
         /// </summary>
-        /// <param name="id"> Id do Aluno que sera removido </param>
-        /// <returns> Status Ok </returns>
-        // DELETE: api/AlunoTurma/1
+        /// <param name="id"> Id do usuario que terá seus atributos alterados </param>
+        /// <param name="u"> Usuario </param>
+        /// <returns> Status e Usuario </returns>
+        // PUT: api/Usuario/1
+        [HttpGet("{id}")]
+        public IActionResult Put(int id, Usuario u)
+        {
+            try
+            {
+                _usuario.Alterar(id, u);
+
+                return Ok(u);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Remover usuario
+        /// </summary>
+        /// <param name="id"> Id do usuario que sera removido </param>
+        /// <returns> Status </returns>
+        // DELETE: api/Usuario/1
         [HttpGet("{id}")]
         public IActionResult Delete(int id)
         {
             try
             {
-                var aluno = _alunoTurma.BuscarPorID(id);
+                var usuario = _usuario.BuscarPorID(id);
 
-                if (aluno == null)
+                if (usuario == null)
                     return NotFound();
 
-                _alunoTurma.Remover(id);
+                _usuario.Remover(id);
 
                 return Ok();
             }
