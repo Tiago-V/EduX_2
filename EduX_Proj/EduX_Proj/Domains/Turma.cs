@@ -11,7 +11,7 @@ namespace EduX_Proj.Domains
             ProfessorTurma = new HashSet<ProfessorTurma>();
         }
 
-        public Guid IdTurma { get; set; }
+        public int IdTurma { get; set; }
         public string Descricao { get; set; }
         public int IdCurso { get; set; }
 

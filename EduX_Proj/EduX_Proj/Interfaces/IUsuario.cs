@@ -9,9 +9,9 @@ namespace EduX_Proj.Interfaces
     interface IUsuario
     {
         List<Usuario> ListarTodos();
-        Usuario BuscarPorID(Guid id);
+        Usuario BuscarPorID(int id);
         void Adicionar(Usuario u);
-        void Alterar(Guid id, Usuario u);
-        void Remover(Guid id);
+        void Alterar(int id, Usuario u);
+        void Remover(int id);
     }
 }
