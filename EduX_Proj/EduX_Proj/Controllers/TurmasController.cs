@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduX_Proj.Domains;
+using EduX_Proj.Interfaces;
 using EduX_Proj.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,11 @@ namespace EduX_Proj.Controllers
     [ApiController]
     public class TurmasController : ControllerBase
     {
-        private readonly TurmaRepository _turmaRepository;
+        private readonly ITurma _turma;
 
         public TurmasController()
         {
-            _turmaRepository = new TurmaRepository();
+            _turma = new TurmaRepository();
         }
 
         /// <summary>
@@ -30,7 +31,7 @@ namespace EduX_Proj.Controllers
         {
             try
             {
-                var turmas = _turmaRepository.ListarTodos();
+                var turmas = _turma.ListarTodos();
 
                 if (turmas.Count == 0)
                     return NoContent();
@@ -54,7 +55,7 @@ namespace EduX_Proj.Controllers
         {
             try
             {
-                Turma turma = _turmaRepository.BuscarPorID(id);
+                Turma turma = _turma.BuscarPorID(id);
 
                 if (turma == null)
                     return NotFound();
@@ -79,7 +80,7 @@ namespace EduX_Proj.Controllers
         {
             try
             {
-                _turmaRepository.Adicionar(t);
+                _turma.Adicionar(t);
 
                 return Ok(t);
             }
@@ -101,7 +102,7 @@ namespace EduX_Proj.Controllers
         {
             try
             {
-                _turmaRepository.Alterar(id, t);
+                _turma.Alterar(id, t);
 
                 return Ok(t);
             }
@@ -122,12 +123,12 @@ namespace EduX_Proj.Controllers
         {
             try
             {
-                var turma = _turmaRepository.BuscarPorID(id);
+                var turma = _turma.BuscarPorID(id);
 
                 if (turma == null)
                     return NotFound();
 
-                _turmaRepository.Remover(id);
+                _turma.Remover(id);
 
                 return Ok();
             }
