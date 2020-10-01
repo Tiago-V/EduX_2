@@ -52,11 +52,11 @@ namespace EduX_Proj.Controllers
         /// <returns>Curso</returns>
 
         [HttpGet]
-        public IActionResult Get(Guid id)
+        public IActionResult Get(int id)
         {
             try
             {
-                Curso curso = _curso.BuscarPorId(id);
+                Curso curso = (Curso)_curso.BuscarPorId(id);
                 if (curso == null)
                     return NotFound();
                 return Ok(curso);
@@ -96,7 +96,7 @@ namespace EduX_Proj.Controllers
         /// <returns>Status: Ok</returns>
 
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, Curso curso)
+        public IActionResult Put(int id, Curso curso)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace EduX_Proj.Controllers
         /// <returns>Status: Ok</returns>
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        public IActionResult Delete(int id)
         {
             try
             {

@@ -52,7 +52,7 @@ namespace EduX_Proj.Controllers
         /// <returns>Categoria</returns>
 
         [HttpGet]
-        public IActionResult Get(Guid id)
+        public IActionResult Get(int id)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace EduX_Proj.Controllers
         /// <returns>Status: Ok</returns>
 
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, Categoria cat)
+        public IActionResult Put(int id, Categoria cat)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace EduX_Proj.Controllers
         /// <returns>Status: Ok</returns>
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        public IActionResult Delete(int id)
         {
             try
             {
