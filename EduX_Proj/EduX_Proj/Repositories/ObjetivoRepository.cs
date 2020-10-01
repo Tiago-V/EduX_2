@@ -11,53 +11,110 @@ namespace EduX_Proj.Repositories
     public class ObjetivoRepository : IObjetivo
     {
 
-        private readonly EduXContext ctx;
+        private readonly EduXContext _ctx;
+
+        public ObjetivoRepository()
+        {
+            _ctx = new EduXContext();
+        }
 
         /// <summary>
-        /// Cadastra um novo objetivo no banco.
+        /// Adiciona um objetivo
         /// </summary>
-        /// <param name="objetivo"></param>
+        /// <param name="objetivo">Objeto a ser adicionado</param>
         public void Adicionar(Objetivo objetivo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _ctx.Objetivo.Add(objetivo);
+                _ctx.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         /// <summary>
-        /// Altera um objetivo já cadastrado no banco.
+        /// Altera um objetivo ja instanciado
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="objetivo"></param>
+        /// <param name="id">Id do objetivo</param>
+        /// <param name="objetivo">O objetivo</param>
         public void Alterar(int id, Objetivo objetivo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Objetivo objetivoTemp = BuscarPorID(id);
+
+                objetivoTemp.Descricao = objetivo.Descricao;
+                objetivoTemp.ObjetivoAluno = objetivo.ObjetivoAluno;
+
+                _ctx.Objetivo.Update(objetivoTemp);
+                _ctx.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         /// <summary>
-        /// Busca um objetivo cadastrado no banco a partir do seu id.
+        /// Busca um objetivo pelo id na lista
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns>Objetivo buscado</returns>
+        /// <param name="id">id do objetivo</param>
+        /// <returns>Retorna o objetivo caso exista</returns>
         public Objetivo BuscarPorID(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _ctx.Objetivo.Find(id);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         /// <summary>
-        /// Exclui um objetivo já cadastrado no banco.
+        /// Remove um objetivo da lista
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">id do objetivo a ser removido</param>
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Objetivo objetivo = BuscarPorID(id);
+
+                if (objetivo == null)
+                    throw new Exception("Produto não encontrado.");
+
+                _ctx.Objetivo.Remove(objetivo);
+                _ctx.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         /// <summary>
-        /// Lista todos os objetvos já cadastrados no banco.
+        /// Lista os objetivo intanciados
         /// </summary>
-        /// <returns>Objetivos cadastrados</returns>
+        /// <returns>Retorna a lista de objetivo</returns>
         public List<Objetivo> Listar()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _ctx.Objetivo.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
