@@ -5,19 +5,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-<<<<<<< HEAD
+
 		<Folder Include="Utils\" />
 	</ItemGroup>
 
 	<ItemGroup>
-<<<<<<< HEAD
+
 		<PackageReference Include="AWSSDK.DynamoDBv2" Version="3.5.0.22" />
 		<PackageReference Include="Google.Protobuf" Version="3.13.0" />
-=======
+
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
->>>>>>> 48097b62acbe1cce7ee011a89fba39e2649428c9
-=======
->>>>>>> parent of 3fae1c9... Controllers categoria e curso criados - Amanda
+
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
 			<PrivateAssets>all</PrivateAssets>
