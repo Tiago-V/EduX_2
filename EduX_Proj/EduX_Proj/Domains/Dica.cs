@@ -16,9 +16,13 @@ namespace EduX_Proj.Domains
         public int IdDica { get; set; }
         public string Texto { get; set; }
         public int IdUsuario { get; set; }
-        [NotMapped]
-        public IFormFile Imagem { get; set; }
 
+        [NotMapped]
+        [JsonIgnore]
+
+        public IFormFile Imagem { get; set; }
+        [NotMapped]
+        [JsonIgnore]
         public string UrlImagem { get; set; }
 
 
