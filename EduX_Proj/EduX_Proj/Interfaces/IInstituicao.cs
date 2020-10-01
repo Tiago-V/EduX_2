@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace EduX_Proj.Interfaces
 {
-    interface IUsuario
+    interface IInstituicao
     {
-        List<Usuario> ListarTodos();
-        Usuario BuscarPorID(int id);
-        void Adicionar(Usuario u);
-        void Alterar(int id, Usuario u);
+        List<Instituicao> ListarTodos();
+        Instituicao BuscarPorID(int id);
+        void Adicionar(Instituicao i);
+        void Alterar(int id, Instituicao i);
         void Remover(int id);
     }
 }

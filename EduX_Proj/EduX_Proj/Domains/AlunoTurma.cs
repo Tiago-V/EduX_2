@@ -10,7 +10,7 @@ namespace EduX_Proj.Domains
             ObjetivoAluno = new HashSet<ObjetivoAluno>();
         }
 
-        public Guid IdAlunoTurma { get; set; }
+        public int IdAlunoTurma { get; set; }
         public string Matricula { get; set; }
         public int IdUsuario { get; set; }
         public int IdTurma { get; set; }

@@ -17,13 +17,22 @@ namespace EduX_Proj.Repositories
             _ctx = new EduXContext();
         }
 
+        /// <summary>
+        /// Adiciona um novo usuário no banco.
+        /// </summary>
+        /// <param name="u"></param>
         public void Adicionar(Usuario u)
         {
             _ctx.Usuario.Add(u);
             _ctx.SaveChanges();
         }
 
-        public void Alterar(Guid id, Usuario u)
+        /// <summary>
+        /// Altera um usuário já cadastrado no banco.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="u"></param>
+        public void Alterar(int id, Usuario u)
         {
             try
             {
@@ -45,7 +54,12 @@ namespace EduX_Proj.Repositories
             }
         }
 
-        public Usuario BuscarPorID(Guid id)
+        /// <summary>
+        /// Busca um usuário já cadastrado no banco a partir do seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Usuário buscado.</returns>
+        public Usuario BuscarPorID(int id)
         {
             try
             {
@@ -57,6 +71,10 @@ namespace EduX_Proj.Repositories
             }
         }
 
+        /// <summary>
+        /// Lista todos os usuários cadastrados no banco.
+        /// </summary>
+        /// <returns>Usuários cadastrados</returns>
         public List<Usuario> ListarTodos()
         {
             try
@@ -69,7 +87,11 @@ namespace EduX_Proj.Repositories
             }
         }
 
-        public void Remover(Guid id)
+        /// <summary>
+        /// Remove um usuário a partir do seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        public void Remover(int id)
         {
             try
             {

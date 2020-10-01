@@ -9,9 +9,9 @@ namespace EduX_Proj.Interfaces
     interface ITurma
     {
         List<Turma> ListarTodos();
-        Turma BuscarPorID(Guid id);
+        Turma BuscarPorID(int id);
         void Adicionar(Turma t);
-        void Alterar(Guid id, Turma t);
-        void Remover(Guid id);
+        void Alterar(int id, Turma t);
+        void Remover(int id);
     }
 }
