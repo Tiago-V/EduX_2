@@ -17,13 +17,22 @@ namespace EduX_Proj.Repositories
             _ctx = new EduXContext();
         }
 
+        /// <summary>
+        /// Adiciona uma turma no banco.
+        /// </summary>
+        /// <param name="t"></param>
         public void Adicionar(Turma t)
         {
             _ctx.Turma.Add(t);
             _ctx.SaveChanges();
         }
 
-        public void Alterar(Guid id, Turma t)
+        /// <summary>
+        /// Altera uma turma já cadastrada no banco.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="t"></param>
+        public void Alterar(int id, Turma t)
         {
             try
             {
@@ -40,7 +49,12 @@ namespace EduX_Proj.Repositories
             }
         }
 
-        public Turma BuscarPorID(Guid id)
+        /// <summary>
+        /// Busca uma turma já cadastrada no banco de acordo com seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Turma buscada</returns>
+        public Turma BuscarPorID(int id)
         {
             try
             {
@@ -52,6 +66,10 @@ namespace EduX_Proj.Repositories
             }
         }
 
+        /// <summary>
+        /// Lista todas as turmas cadastradas no banco.
+        /// </summary>
+        /// <returns>Turmas cadastradas</returns>
         public List<Turma> ListarTodos()
         {
             try
@@ -64,7 +82,11 @@ namespace EduX_Proj.Repositories
             }
         }
 
-        public void Remover(Guid id)
+        /// <summary>
+        /// Remove uma turma já cadastrada no banco a partir do seu id
+        /// </summary>
+        /// <param name="id"></param>
+        public void Remover(int id)
         {
             try
             {

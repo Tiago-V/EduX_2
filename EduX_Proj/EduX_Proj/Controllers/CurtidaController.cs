@@ -22,7 +22,10 @@ namespace EduX_Proj.Controllers
             _curtidaRepository = new CurtidaRepository();
         }
 
-        // GET: api/Dica
+        /// <summary>
+        /// Método que lista todas as curtidas - controller
+        /// </summary>
+        /// <returns>Curtidas</returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -43,7 +46,11 @@ namespace EduX_Proj.Controllers
             }
         }
 
-        // GET: api/Dica/5
+        /// <summary>
+        /// Método que busca uma curtida a partir do seu id - controller
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Curtida buscada</returns>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -64,9 +71,13 @@ namespace EduX_Proj.Controllers
             }
         }
 
-        // PUT: api/Dica/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+
+        /// <summary>
+        /// Método que altera uma curtida já cadastrada - controller
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="curtida"></param>
+        /// <returns>Curtida alterada</returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, Curtida curtida)
         {
@@ -84,9 +95,11 @@ namespace EduX_Proj.Controllers
             }
         }
 
-        // POST: api/Dica
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /// <summary>
+        /// Método que cadastra uma nova curtida no banco - controller
+        /// </summary>
+        /// <param name="curtida"></param>
+        /// <returns>Curtida cadastrada</returns>
         [HttpPost]
         public IActionResult Post(Curtida curtida)
         {
@@ -103,7 +116,11 @@ namespace EduX_Proj.Controllers
             }
         }
 
-        // DELETE: api/Dica/5
+        /// <summary>
+        /// Remove uma curtida já cadastrada no banco - controller
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Curtida excluída</returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

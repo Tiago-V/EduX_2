@@ -8,58 +8,56 @@ using System.Threading.Tasks;
 
 namespace EduX_Proj.Repositories
 {
-    public class AlunoTurmaRepository : IAlunoTurma
+    public class CategoriaRepository : ICategoria
     {
         private readonly EduXContext _ctx;
 
-        public AlunoTurmaRepository()
+        public CategoriaRepository()
         {
             _ctx = new EduXContext();
         }
 
         /// <summary>
-        /// Adiciona um AlunoTurma.
+        /// Cadastra uma nova Categoria.
         /// </summary>
-        /// <param name="a"></param>
-        public void Adicionar(AlunoTurma a)
+        /// <param name="cat"></param>
+        public void Adicionar(Categoria cat)
         {
-            _ctx.AlunoTurma.Add(a);
+            _ctx.Categoria.Add(cat);
             _ctx.SaveChanges();
         }
 
         /// <summary>
-        /// Altera um AlunoTurma a partir do seu id.
+        /// Altera uma categoria já criada no banco a partir do seu id.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="a"></param>
-        public void Alterar(int id, AlunoTurma a)
+        /// <param name="cat"></param>
+        public void Alterar(Guid id, Categoria cat)
         {
             try
             {
-                AlunoTurma aluno = BuscarPorID(id);
+                Categoria categoria = BuscarPorId(id);
+                categoria.Tipo = cat.Tipo;
 
-                aluno.Matricula = a.Matricula;
-
-                _ctx.AlunoTurma.Update(aluno);
+                _ctx.Categoria.Update(cat);
                 _ctx.SaveChanges();
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-         
         }
 
         /// <summary>
-        /// Busca um AlunoTurma por seu id.
+        /// Busca uma categoria a partir do seu id.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
-        public AlunoTurma BuscarPorID(int id)
+        /// <returns>Categoria buscada.</returns>
+        public Categoria BuscarPorId(Guid id)
         {
             try
             {
-                return _ctx.AlunoTurma.Find(id);
+                return _ctx.Categoria.Find(id);
             }
             catch (Exception ex)
             {
@@ -68,14 +66,14 @@ namespace EduX_Proj.Repositories
         }
 
         /// <summary>
-        /// Lista todos os AlunoTurmas cadastrados no banco.
+        /// Lista todas as categorias já cadastradas no banco.
         /// </summary>
-        /// <returns>AlunoTurmas Cadastrados</returns>
-        public List<AlunoTurma> ListarTodos()
+        /// <returns>Todas as categorias cadastradas</returns>
+        public List<Categoria> ListarTodos()
         {
             try
             {
-                return _ctx.AlunoTurma.ToList();
+                return _ctx.Categoria.ToList();
             }
             catch (Exception ex)
             {
@@ -84,16 +82,15 @@ namespace EduX_Proj.Repositories
         }
 
         /// <summary>
-        /// Remove um aluno a partir do seu id.
+        /// Remove uma categoria do banco a partir do seu id
         /// </summary>
         /// <param name="id"></param>
-        public void Remover(int id)
+        public void Remover(Guid id)
         {
             try
             {
-                AlunoTurma aluno = BuscarPorID(id);
-
-                _ctx.AlunoTurma.Remove(aluno);
+                Categoria categoria = BuscarPorId(id);
+                _ctx.Categoria.Remove(categoria);
                 _ctx.SaveChanges();
             }
             catch (Exception ex)
