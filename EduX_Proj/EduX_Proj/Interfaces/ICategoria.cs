@@ -15,6 +15,6 @@ namespace EduX_Proj.Interfaces
         void Remover(Guid id);
         Categoria BuscarPorId(int id);
         void Alterar(int id, Categoria cat);
-        void Remover(int id);
+        void Remover(int id); 
     }
 }

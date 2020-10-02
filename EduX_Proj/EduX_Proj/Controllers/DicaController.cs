@@ -107,11 +107,11 @@ namespace EduX_Proj.Controllers
             try
             {
 
-                if(dica.Imagem != null)
+                if(dica.Arquivo != null)
                 {
-                    var urlImagem = Upload.Local(dica.Imagem);
+                    var urlImagem = Upload.Local(dica.Arquivo);
 
-                    dica.UrlImagem = urlImagem;
+                    dica.Imagem = urlImagem;
                 }
 
                 _dicaRepository.Cadastrar(dica);
