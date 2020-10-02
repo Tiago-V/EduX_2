@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace EduX_Proj.Controllers
 {
     [Route("api/[controller]")]
@@ -27,7 +29,7 @@ namespace EduX_Proj.Controllers
         /// Lista das Categorias
         /// </summary>
         /// <returns>Lista as Categorias</returns>
-        
+
         [HttpGet]
         public IActionResult Get()
         {
@@ -51,8 +53,9 @@ namespace EduX_Proj.Controllers
         /// <param name="id">Id Categoria</param>
         /// <returns>Categoria</returns>
 
+        // GET api/<CategoriaController>/5
         [HttpGet]
-        public IActionResult Get(Guid id)
+        public IActionResult Get(int id)
         {
             try
             {
@@ -66,13 +69,14 @@ namespace EduX_Proj.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        
+
         /// <summary>
         /// Adiciona uma categoria
         /// </summary>
         /// <param name="cat">Categoria</param>
         /// <returns>Status: Ok</returns>
 
+        // POST api/<CategoriaController>
         [HttpPost]
         public IActionResult Post(Categoria cat)
         {
@@ -95,8 +99,9 @@ namespace EduX_Proj.Controllers
         /// <param name="cat">Categoria</param>
         /// <returns>Status: Ok</returns>
 
+        // PUT api/<CategoriaController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, Categoria cat)
+        public IActionResult Put(int id, Categoria cat)
         {
             try
             {
@@ -116,8 +121,9 @@ namespace EduX_Proj.Controllers
         /// <param name="id"></param>
         /// <returns>Status: Ok</returns>
 
+        // DELETE api/<CategoriaController>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        public IActionResult Delete(int id)
         {
             try
             {
