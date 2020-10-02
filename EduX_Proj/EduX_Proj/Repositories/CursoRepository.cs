@@ -16,9 +16,6 @@ namespace EduX_Proj.Repositories
         {
             _ctx = new EduXContext();
         }
-<<<<<<< HEAD
-        
-=======
 
         /// <summary>
         /// Altera uma curtida.
@@ -116,7 +113,6 @@ namespace EduX_Proj.Repositories
                 throw new Exception(ex.Message);
             }
         }
->>>>>>> 5682cf44d1a7b3b5b56ae3395f63a504a55792b9
     }
 }
 

@@ -10,8 +10,8 @@ namespace EduX_Proj.Interfaces
     {
         List<Categoria> ListarTodos();
         Categoria BuscarPorID(int id);
-        void Cadastrar(Categoria categoria);
-        void Alterar(int id, Categoria categoria);
+        void Cadastrar(Categoria cat);
+        void Alterar(int id, Categoria cat);
         void Excluir(int id);
     }
 }
