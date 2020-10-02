@@ -1,5 +1,6 @@
 using EduX_Proj.Contexts;
 using EduX_Proj.Domains;
+using EduX_Proj.Interface;
 using EduX_Proj.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace EduX_Proj.Repositories
 {
     public class PerfilRepository : IPerfil
     {
-        private readonly EduxContext _ctx;
+        private readonly EduXContext _ctx;
 
         public PerfilRepository()
         {
-            _ctx = new EduxContext();
+            _ctx = new EduXContext();
         }
 
         /// <summary>
@@ -40,7 +41,7 @@ namespace EduX_Proj.Repositories
         /// </summary>
         /// <param name="id">ID para pesquisa</param>
         /// <returns>Perfil pesquisado</returns>
-        public Perfil BuscarID(int id)
+        public Perfil BuscarPorID(int id)
         {
             try
             {
@@ -56,23 +57,20 @@ namespace EduX_Proj.Repositories
         /// Edita um tipo de perfil
         /// </summary>
         /// <param name="perfil">Perfil a ser editado</param>
-        public void Editar(Perfil perfil)
+        public void Alterar(int id, Perfil perfil)
         {
             try
             {
-                Perfil perfilTemp = BuscarID(perfil.IdPerfil);
+                Perfil p = BuscarPorID(id);
 
-                if (perfilTemp == null)
-                    throw new Exception("Tipo de Perfil não encontrado.");
+                p.Permissao = perfil.Permissao;
 
-                perfilTemp.Permissao = perfil.Permissao;
-                _ctx.Perfil.Update(perfilTemp);
-
+                _ctx.Perfil.Update(p);
                 _ctx.SaveChanges();
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message); ;
+                throw new Exception(ex.Message);
             }
         }
 
@@ -84,7 +82,7 @@ namespace EduX_Proj.Repositories
         {
             try
             {
-                Perfil perfil = BuscarID(id);
+                Perfil perfil = BuscarPorID(id);
 
                 if (perfil == null)
                     throw new Exception("Tipo de Perfil não encontrado.");
@@ -104,7 +102,7 @@ namespace EduX_Proj.Repositories
         /// Lista todos os perfís
         /// </summary>
         /// <returns>Lista dos perfís</returns>
-        public List<Perfil> Listar()
+        public List<Perfil> ListarTodos()
         {
             try
             {

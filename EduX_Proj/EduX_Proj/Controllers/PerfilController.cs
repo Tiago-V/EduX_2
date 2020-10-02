@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using EduX_Proj.Contexts;
 using EduX_Proj.Domains;
+using EduX_Proj.Interface;
+using EduX_Proj.Repositories;
 using EduX_Proj.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -38,24 +40,16 @@ namespace EduX_Proj.Controllers
         {
             try
             {
-                var perfis = _perfilRepository.Listar();
+                var perfil = _perfilRepository.ListarTodos();
 
-                if (perfis.Count == 0)
+                if (perfil.Count == 0)
                     return NoContent();
 
-                return Ok(new
-                {
-                    totalCount = perfis.Count,
-                    data = perfis
-                });
+                return Ok(perfil);
             }
             catch (Exception ex)
             {
-                return BadRequest(new
-                {
-                    statusCode = 400,
-                    error = "Envie um email para email@email.com informando que ocorreu um erro no endpoint Get/Usuarios"
-                });
+                return BadRequest(ex.Message);
             }
         }
 
@@ -69,7 +63,7 @@ namespace EduX_Proj.Controllers
         {
             try
             {
-                Perfil perfil = _perfilRepository.BuscarID(id);
+                Perfil perfil = _perfilRepository.BuscarPorID(id);
 
                 if (perfil == null)
                     return NotFound();
@@ -93,13 +87,13 @@ namespace EduX_Proj.Controllers
         {
             try
             {
-                var perfilTemp = _perfilRepository.BuscarID(id);
+                var perfilTemp = _perfilRepository.BuscarPorID(id);
 
                 if (perfilTemp == null)
                     return NotFound();
 
                 perfil.IdPerfil = id;
-                _perfilRepository.Editar(perfil);
+                _perfilRepository.Alterar(id, perfil);
 
                 return Ok(perfil);
             }

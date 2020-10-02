@@ -9,12 +9,9 @@ namespace EduX_Proj.Interfaces
     interface ICurso
     {
         List<Curso> ListarTodos();
-        Curso BuscarPorId(Guid id);
+        Curso BuscarPorID(int id);
         void Adicionar(Curso curso);
-        void Alterar(Guid id, Curso curso);
-        void Remover(Guid id);
         void Alterar(int id, Curso curso);
-        object BuscarPorId(int id);
         void Remover(int id);
     }
 }

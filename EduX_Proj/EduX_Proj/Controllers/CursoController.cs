@@ -59,7 +59,7 @@ namespace EduX_Proj.Controllers
         {
             try
             {
-                Curso curso = (Curso)_curso.BuscarPorId(id);
+                Curso curso = (Curso)_curso.BuscarPorID(id);
                 if (curso == null)
                     return NotFound();
                 return Ok(curso);
@@ -127,7 +127,7 @@ namespace EduX_Proj.Controllers
         {
             try
             {
-                var curso = _curso.BuscarPorId(id);
+                var curso = _curso.BuscarPorID(id);
 
                 if (curso == null)
                     return NotFound();
