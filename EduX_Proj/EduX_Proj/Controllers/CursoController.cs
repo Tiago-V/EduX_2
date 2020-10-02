@@ -53,7 +53,6 @@ namespace EduX_Proj.Controllers
         /// </summary>
         /// <param name="id">Id Curso</param>
         /// <returns>Curso</returns>
-
         // GET api/<CursoController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
