@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace EduX_Proj.Controllers
 {
     [Route("api/[controller]")]
@@ -28,6 +30,7 @@ namespace EduX_Proj.Controllers
         /// </summary>
         /// <returns>Lista os Cursos</returns>
 
+        // GET: api/<CursoController>
         [HttpGet]
         public IActionResult Get()
         {
@@ -51,7 +54,8 @@ namespace EduX_Proj.Controllers
         /// <param name="id">Id Curso</param>
         /// <returns>Curso</returns>
 
-        [HttpGet]
+        // GET api/<CursoController>/5
+        [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             try
@@ -72,6 +76,7 @@ namespace EduX_Proj.Controllers
         /// </summary>
         /// <param name="curso">Curso</param>
         /// <returns>Status: Ok</returns>
+        // POST api/<CursoController>
 
         [HttpPost]
         public IActionResult Post(Curso curso)
@@ -95,6 +100,7 @@ namespace EduX_Proj.Controllers
         /// <param name="curso">Curso</param>
         /// <returns>Status: Ok</returns>
 
+        // PUT api/<CursoController>/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, Curso curso)
         {
@@ -116,6 +122,7 @@ namespace EduX_Proj.Controllers
         /// <param name="id"></param>
         /// <returns>Status: Ok</returns>
 
+        // DELETE api/<CursoController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
