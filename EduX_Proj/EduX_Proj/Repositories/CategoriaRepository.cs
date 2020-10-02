@@ -48,11 +48,6 @@ namespace EduX_Proj.Repositories
             }
         }
 
-        public void Alterar(int id, Categoria cat)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Busca uma categoria a partir do seu id.
         /// </summary>
