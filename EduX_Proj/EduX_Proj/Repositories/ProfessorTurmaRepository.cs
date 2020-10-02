@@ -1,3 +1,6 @@
+using EduX_Proj.Contexts;
+using EduX_Proj.Domains;
+using EduX_Proj.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,20 +10,28 @@ namespace EduX_Proj.Repositories
     public class ProfessorTurmaRepository : IProfessorTurma
     {
 
-        private readonly EduxContext ctx;
+        private readonly EduXContext _ctx;
         public ProfessorTurmaRepository()
         {
-            ctx = new EduxContext();
+            _ctx = new EduXContext();
         }
 
-        //adicionar o professor 
         public void Adicionar(ProfessorTurma ProfessorT)
         {
+            _ctx.ProfessorTurma.Add(ProfessorT);
+            _ctx.SaveChanges();
+        }
+
+        public void Alterar(int id, ProfessorTurma ProfessorT)
+        {
             try
             {
-                ctx.ProfessorTurma.add(ProfessorT);
-                //salvar as alterações
-                ctx.SaveChanges();
+                ProfessorTurma prof = BuscarPorID(id);
+
+                prof.Descricao = ProfessorT.Descricao;
+
+                _ctx.ProfessorTurma.Update(prof);
+                _ctx.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -28,12 +39,11 @@ namespace EduX_Proj.Repositories
             }
         }
 
-        //buscar um professor
-        public ProfessorTurma BuscarPorNome(string nome)
+        public ProfessorTurma BuscarPorID(int id)
         {
             try
             {
-                return ctx.ProfessorTurma.Where(p => p.Descricap.Contains(nome)).ToList();
+                return _ctx.ProfessorTurma.Find(id);
             }
             catch (Exception ex)
             {
@@ -41,25 +51,14 @@ namespace EduX_Proj.Repositories
             }
         }
 
-        //editar o professor
-        public void Editar(ProfessorTurma ProfessorT)
+        public void Excluir(int id)
         {
             try
             {
-                //buscar o professor pelo id
-                ProfessorTurma professorTemp = BuscarPorNome(ProfessorT.IdProfessorTurma);
-                //verifica se esta tudo certo e o professor está no sistema, caso falhe, um exeption é gerado 
-                if (professorTemp == null)
-                    throw new Exception("O Professor não existe no sistema, por favor envie um nome valido.")
+                ProfessorTurma prof = BuscarPorID(id);
 
-                //caso exista o professor, altera suas propriedades
-                professorTemp.Descricao = professorTemp.Descricao;
-
-                //altera o professor
-                ctx.ProfessorTurma.Update(professorTemp);
-                //salvar alterações
-                ctx.SaveChanges();
-
+                _ctx.ProfessorTurma.Remove(prof);
+                _ctx.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -67,35 +66,11 @@ namespace EduX_Proj.Repositories
             }
         }
 
-        public List<ProfessorTurma> Listar()
+        public List<ProfessorTurma> ListarTodos()
         {
             try
             {
-                return ctx.ProfessorTurma.ToList();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        //deleta um professor do sistema 
-        public void Remover(Guid Id)
-        {
-            try
-            {
-                //buscar o professor pelo id
-                ProfessorTurma professorTemp = BuscarPorId(Id);
-                //verifica se esta tudo certo e o professor está no sistema, caso falhe, um exeption é gerado 
-                if (professorTemp == null)
-                    throw new Exception("O Professor não existe no sistema, por favor envie um nome valido.")
-
-
-                //remove o professor 
-                ctx.ProfessorTurma.Remove(professorTemp);
-                //salvar alterações
-                ctx.SaveChanges();
-
+                return _ctx.ProfessorTurma.ToList();
             }
             catch (Exception ex)
             {
@@ -104,5 +79,4 @@ namespace EduX_Proj.Repositories
         }
     }
 
-}
 }

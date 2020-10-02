@@ -8,10 +8,10 @@ namespace EduX_Proj.Interface
 {
     interface IProfessorTurma
     {
-        List<IProfessorTurma> Listar();
-        ProfessorTurma BuscarPorNome(string nome);
+        List<ProfessorTurma> ListarTodos();
+        ProfessorTurma BuscarPorID(int id);
         void Adicionar(ProfessorTurma ProfessorT);
-        void Alterar(ProfessorTurma ProfessorT);
-        void Excluir(Guid id);
+        void Alterar(int id, ProfessorTurma ProfessorT);
+        void Excluir(int id);
     }
 }

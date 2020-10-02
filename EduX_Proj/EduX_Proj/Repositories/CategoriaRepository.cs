@@ -32,7 +32,7 @@ namespace EduX_Proj.Repositories
         /// </summary>
         /// <param name="id"></param>
         /// <param name="cat"></param>
-        public void Alterar(Guid id, Categoria cat)
+        public void Alterar(int id, Categoria cat)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace EduX_Proj.Repositories
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Categoria buscada.</returns>
-        public Categoria BuscarPorId(Guid id)
+        public Categoria BuscarPorId(int id)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace EduX_Proj.Repositories
         /// Remove uma categoria do banco a partir do seu id
         /// </summary>
         /// <param name="id"></param>
-        public void Remover(Guid id)
+        public void Remover(int id)
         {
             try
             {

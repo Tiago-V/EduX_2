@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduX_Proj.Domains;
+using EduX_Proj.Interface;
 using EduX_Proj.Interfaces;
 using EduX_Proj.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -14,11 +15,11 @@ namespace EduX_Proj.Controllers
     [ApiController]
     public class ProfessorTurmaContoller : ControllerBase
     {
-        private readonly IProfessorTurmaRepository professorTRepository;
+        private readonly IProfessorTurma _professorTRepository;
 
         public ProfessorTurmaContoller()
         {
-            professorTRepository = new ProfessorTurmaRepository();
+            _professorTRepository = new ProfessorTurmaRepository();
         }
 
 
@@ -33,7 +34,7 @@ namespace EduX_Proj.Controllers
             try
             {
                 //lista de professores
-                var prof = professorTRepository.Listar();
+                var prof = _professorTRepository.ListarTodos();
 
                 //verifica se existe no conxtexto atual
                 //caso nao exista ele retorna NoContext
@@ -62,12 +63,12 @@ namespace EduX_Proj.Controllers
         /// <param name="id">ID do professor</param>
         /// <returns>Um professor</returns>
         [HttpGet("{id}")]
-        public IActionResult Get(Guid id)
+        public IActionResult Get(int id)
         {
             try
             {
                 //busca um professor por id
-                ProfessorTurma prof = professorTRepository.BuscarPorId(id);
+                ProfessorTurma prof = _professorTRepository.BuscarPorID(id);
 
                 //faz a verificacao no contexto para ver se o professor foi encontrado
                 //caso nao for encontrado o sistema retornara NotFound 
@@ -99,7 +100,7 @@ namespace EduX_Proj.Controllers
             try
             {
                 //adiciona um novo professor
-                professorTRepository.Adicionar(professorT);
+                _professorTRepository.Adicionar(professorT);
 
                 //retorna Ok se o professor tiver sido cadastrado
                 return Ok(professorT);
@@ -124,12 +125,12 @@ namespace EduX_Proj.Controllers
         /// <param name="profesorT">Objeto professor com as alterações</param>
         /// <returns>Info do professor alterado</returns>
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, ProfessorTurma professorT)
+        public IActionResult Put(int id, ProfessorTurma professorT)
         {
             try
             {
                 //edita professor
-                professorTRepository.Editar(professorT);
+                _professorTRepository.Alterar(id, professorT);
 
                 //retorna o Ok com os dados do professor
                 return Ok(professorT);
@@ -150,12 +151,12 @@ namespace EduX_Proj.Controllers
         /// <param name="id">ID do professor</param>
         /// <returns>ID excluído</returns>
         [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        public IActionResult Delete(int id)
         {
             try
             {
                 //busca professor pelo Id
-                var prof = professorTRepository.BuscarPorId(id);
+                var prof = _professorTRepository.BuscarPorID(id);
 
                 //verifica se professor existe
                 //caso não exista retorna NotFound
@@ -163,7 +164,7 @@ namespace EduX_Proj.Controllers
                     return NotFound();
 
                 //caso exista remove o professor
-                professorTRepository.Remover(id);
+                _professorTRepository.Excluir(id);
                 //retorna Ok
                 return Ok(id);
             }
