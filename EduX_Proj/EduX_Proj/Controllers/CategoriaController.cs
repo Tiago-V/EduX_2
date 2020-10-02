@@ -18,7 +18,7 @@ namespace EduX_Proj.Controllers
     [ApiController]
     public class CategoriaController : ControllerBase
     {
-        private readonly ICategoria _categoria;
+        private readonly CategoriaRepository _categoria;
 
         public CategoriaController()
         {

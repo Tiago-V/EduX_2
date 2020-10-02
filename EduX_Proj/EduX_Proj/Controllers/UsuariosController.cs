@@ -18,7 +18,7 @@ namespace EduX_Proj.Controllers
     {
         private EduXContext _context = new EduXContext();
 
-        private readonly IUsuario _usuario;
+        private readonly UsuarioRepository _usuario;
 
         public UsuariosController()
         {

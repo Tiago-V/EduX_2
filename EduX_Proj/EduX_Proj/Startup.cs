@@ -52,7 +52,9 @@ namespace EduX_Proj
                         Url = new Uri("https://example.com/license"),
                     }
                 });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
+
             // JWT
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
@@ -92,7 +94,7 @@ namespace EduX_Proj
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("./v1/swagger.json", "API - EduX");
             });
 
             app.UseEndpoints(endpoints =>

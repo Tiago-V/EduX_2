@@ -18,7 +18,7 @@ namespace EduX_Proj.Controllers
     [ApiController]
     public class CursoController : ControllerBase
     {
-        private readonly ICurso _curso;
+        private readonly CursoRepository _curso;
 
         public CursoController()
         {
