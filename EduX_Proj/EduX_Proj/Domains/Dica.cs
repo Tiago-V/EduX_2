@@ -20,7 +20,7 @@ namespace EduX_Proj.Domains
         [JsonIgnore]
         public IFormFile Arquivo { get; set; }
 
-        public string Imagem { get; set; }
+        public string Imagem { get; set; } 
 
 
 
