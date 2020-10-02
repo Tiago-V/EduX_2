@@ -13,5 +13,8 @@ namespace EduX_Proj.Interfaces
         void Adicionar(Curso curso);
         void Alterar(Guid id, Curso curso);
         void Remover(Guid id);
+        void Alterar(int id, Curso curso);
+        object BuscarPorId(int id);
+        void Remover(int id);
     }
 }

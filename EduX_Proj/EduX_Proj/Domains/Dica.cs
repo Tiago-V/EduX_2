@@ -14,12 +14,13 @@ namespace EduX_Proj.Domains
         }
 
         public int IdDica { get; set; }
-        public string Texto { get; set; }
+        public string Texto { get; set; } 
         public int IdUsuario { get; set; }
         [NotMapped]
-        public IFormFile Imagem { get; set; }
+        [JsonIgnore]
+        public IFormFile Arquivo { get; set; }
 
-        public string UrlImagem { get; set; }
+        public string Imagem { get; set; } 
 
 
 
