@@ -9,12 +9,9 @@ namespace EduX_Proj.Interfaces
     interface ICategoria
     {
         List<Categoria> ListarTodos();
-        Categoria BuscarPorId(Guid id);
-        void Adicionar(Categoria cat);
-        void Alterar(Guid id, Categoria cat);
-        void Remover(Guid id);
-        Categoria BuscarPorId(int id);
-        void Alterar(int id, Categoria cat);
-        void Remover(int id); 
+        Categoria BuscarPorID(int id);
+        void Cadastrar(Categoria categoria);
+        void Alterar(int id, Categoria categoria);
+        void Excluir(int id);
     }
 }

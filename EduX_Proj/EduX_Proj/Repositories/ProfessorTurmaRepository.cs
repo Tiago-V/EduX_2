@@ -1,3 +1,6 @@
+using EduX_Proj.Contexts;
+using EduX_Proj.Domains;
+using EduX_Proj.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,102 +10,110 @@ namespace EduX_Proj.Repositories
     public class ProfessorTurmaRepository : IProfessorTurma
     {
 
-        private readonly EduxContext ctx;
+        private readonly EduXContext _ctx;
         public ProfessorTurmaRepository()
         {
-            ctx = new EduxContext();
+            _ctx = new EduXContext();
         }
 
-        //adicionar o professor 
-        public void Adicionar(ProfessorTurma ProfessorT)
+
+        /// <summary>
+        /// Altera uma curtida.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="curtida"></param>
+        public void Alterar(int id, ProfessorTurma professorT)
         {
             try
             {
-                ctx.ProfessorTurma.add(ProfessorT);
-                //salvar as alterações
-                ctx.SaveChanges();
+                ProfessorTurma professorTemp = BuscarPorID(id);
+
+                _ctx.ProfessorTurma.Update(professorTemp);
+                _ctx.SaveChanges();
             }
             catch (Exception ex)
             {
+
                 throw new Exception(ex.Message);
             }
         }
 
-        //buscar um professor
-        public ProfessorTurma BuscarPorNome(string nome)
+        /// <summary>
+        /// Busca uma curtida pelo id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ProfessorTurma BuscarPorID(int id)
         {
             try
             {
-                return ctx.ProfessorTurma.Where(p => p.Descricap.Contains(nome)).ToList();
+                return _ctx.ProfessorTurma.Find(id);
             }
             catch (Exception ex)
             {
+
                 throw new Exception(ex.Message);
             }
         }
 
-        //editar o professor
-        public void Editar(ProfessorTurma ProfessorT)
+        /// <summary>
+        /// Cadastra uma curtida do banco.
+        /// </summary>
+        /// <param name="curtida"></param>
+        public void Cadastrar(ProfessorTurma professorT)
         {
             try
             {
-                //buscar o professor pelo id
-                ProfessorTurma professorTemp = BuscarPorNome(ProfessorT.IdProfessorTurma);
-                //verifica se esta tudo certo e o professor está no sistema, caso falhe, um exeption é gerado 
-                if (professorTemp == null)
-                    throw new Exception("O Professor não existe no sistema, por favor envie um nome valido.")
-
-                //caso exista o professor, altera suas propriedades
-                professorTemp.Descricao = professorTemp.Descricao;
-
-                //altera o professor
-                ctx.ProfessorTurma.Update(professorTemp);
-                //salvar alterações
-                ctx.SaveChanges();
-
+                _ctx.ProfessorTurma.Add(professorT);
+                _ctx.SaveChanges();
             }
             catch (Exception ex)
             {
+
                 throw new Exception(ex.Message);
             }
         }
 
-        public List<ProfessorTurma> Listar()
+        /// <summary>
+        /// Exclui uma curtida do banco.
+        /// </summary>
+        /// <param name="id"></param>
+        public void Excluir(int id)
         {
             try
             {
-                return ctx.ProfessorTurma.ToList();
+                ProfessorTurma professorT = BuscarPorID(id);
+
+                if (professorT == null)
+                    throw new Exception("Produto não encontrado.");
+
+                _ctx.ProfessorTurma.Remove(professorT);
+                _ctx.SaveChanges();
             }
             catch (Exception ex)
             {
+
                 throw new Exception(ex.Message);
             }
         }
 
-        //deleta um professor do sistema 
-        public void Remover(Guid Id)
+        /// <summary>
+        /// Listar todas as curtidas cadastradas.
+        /// </summary>
+        /// <returns></returns>
+        public List<ProfessorTurma> ListarTodos()
         {
             try
             {
-                //buscar o professor pelo id
-                ProfessorTurma professorTemp = BuscarPorId(Id);
-                //verifica se esta tudo certo e o professor está no sistema, caso falhe, um exeption é gerado 
-                if (professorTemp == null)
-                    throw new Exception("O Professor não existe no sistema, por favor envie um nome valido.")
-
-
-                //remove o professor 
-                ctx.ProfessorTurma.Remove(professorTemp);
-                //salvar alterações
-                ctx.SaveChanges();
-
+                return _ctx.ProfessorTurma.ToList();
             }
             catch (Exception ex)
             {
+
                 throw new Exception(ex.Message);
             }
         }
+
+       
     }
-
-}
-}
+    }
