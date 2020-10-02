@@ -59,7 +59,7 @@ namespace EduX_Proj.Controllers
         {
             try
             {
-                Categoria categoria = _categoria.BuscarPorId(id);
+                Categoria categoria = _categoria.BuscarPorID(id);
                 if (categoria == null)
                     return NotFound();
                 return Ok(categoria);
@@ -82,7 +82,7 @@ namespace EduX_Proj.Controllers
         {
             try
             {
-                _categoria.Adicionar(cat);
+                _categoria.Cadastrar(cat);
 
                 return Ok(cat);
             }
@@ -127,11 +127,11 @@ namespace EduX_Proj.Controllers
         {
             try
             {
-                var categoria = _categoria.BuscarPorId(id);
+                var categoria = _categoria.BuscarPorID(id);
 
                 if (categoria == null)
                     return NotFound();
-                _categoria.Remover(id);
+                _categoria.Excluir(id);
 
                 return Ok();
             }

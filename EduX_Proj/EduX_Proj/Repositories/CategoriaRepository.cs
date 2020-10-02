@@ -48,6 +48,11 @@ namespace EduX_Proj.Repositories
             }
         }
 
+        public void Alterar(int id, Categoria cat)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Busca uma categoria a partir do seu id.
         /// </summary>
@@ -63,6 +68,21 @@ namespace EduX_Proj.Repositories
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        public Categoria BuscarPorID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Cadastrar(Categoria cat)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Excluir(int id)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

@@ -15,7 +15,11 @@ namespace EduX_Proj.Controllers
     [ApiController]
     public class ProfessorTurmaContoller : ControllerBase
     {
+<<<<<<< HEAD
         private readonly IProfessorTurma _professorTRepository;
+=======
+        private readonly ProfessorTurmaRepository professorTRepository;
+>>>>>>> 213c00a4013a247c38589b09c467e6577a44f4c4
 
         public ProfessorTurmaContoller()
         {
@@ -34,7 +38,11 @@ namespace EduX_Proj.Controllers
             try
             {
                 //lista de professores
+<<<<<<< HEAD
                 var prof = _professorTRepository.ListarTodos();
+=======
+                var prof = professorTRepository.ListarTodos();
+>>>>>>> 213c00a4013a247c38589b09c467e6577a44f4c4
 
                 //verifica se existe no conxtexto atual
                 //caso nao exista ele retorna NoContext
@@ -68,7 +76,11 @@ namespace EduX_Proj.Controllers
             try
             {
                 //busca um professor por id
+<<<<<<< HEAD
                 ProfessorTurma prof = _professorTRepository.BuscarPorID(id);
+=======
+                ProfessorTurma prof = professorTRepository.BuscarPorID(id);
+>>>>>>> 213c00a4013a247c38589b09c467e6577a44f4c4
 
                 //faz a verificacao no contexto para ver se o professor foi encontrado
                 //caso nao for encontrado o sistema retornara NotFound 
@@ -100,7 +112,11 @@ namespace EduX_Proj.Controllers
             try
             {
                 //adiciona um novo professor
+<<<<<<< HEAD
                 _professorTRepository.Adicionar(professorT);
+=======
+                professorTRepository.Cadastrar(professorT);
+>>>>>>> 213c00a4013a247c38589b09c467e6577a44f4c4
 
                 //retorna Ok se o professor tiver sido cadastrado
                 return Ok(professorT);
@@ -130,7 +146,11 @@ namespace EduX_Proj.Controllers
             try
             {
                 //edita professor
+<<<<<<< HEAD
                 _professorTRepository.Alterar(id, professorT);
+=======
+                professorTRepository.Alterar(id, professorT);
+>>>>>>> 213c00a4013a247c38589b09c467e6577a44f4c4
 
                 //retorna o Ok com os dados do professor
                 return Ok(professorT);
@@ -156,7 +176,11 @@ namespace EduX_Proj.Controllers
             try
             {
                 //busca professor pelo Id
+<<<<<<< HEAD
                 var prof = _professorTRepository.BuscarPorID(id);
+=======
+                var prof = professorTRepository.BuscarPorID(id);
+>>>>>>> 213c00a4013a247c38589b09c467e6577a44f4c4
 
                 //verifica se professor existe
                 //caso não exista retorna NotFound
@@ -164,7 +188,11 @@ namespace EduX_Proj.Controllers
                     return NotFound();
 
                 //caso exista remove o professor
+<<<<<<< HEAD
                 _professorTRepository.Excluir(id);
+=======
+                professorTRepository.Excluir(id);
+>>>>>>> 213c00a4013a247c38589b09c467e6577a44f4c4
                 //retorna Ok
                 return Ok(id);
             }
