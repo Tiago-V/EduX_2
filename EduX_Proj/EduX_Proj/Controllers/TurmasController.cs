@@ -74,7 +74,7 @@ namespace EduX_Proj.Controllers
         /// </summary>
         /// <param name="t"> Turma </param>
         /// <returns> Status e Turma </returns>
-        // POST: api/Turma/1
+        // POST: api/Turma
         [HttpPost]
         public IActionResult Post(Turma t)
         {

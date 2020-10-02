@@ -78,7 +78,7 @@ namespace EduX_Proj.Controllers
         /// </summary>
         /// <param name="u"> Usuario </param>
         /// <returns> Status e Usuario </returns>
-        // POST: api/Usuario/1
+        // POST: api/Usuario
         [HttpPost]
         public IActionResult Post(Usuario u)
         {
