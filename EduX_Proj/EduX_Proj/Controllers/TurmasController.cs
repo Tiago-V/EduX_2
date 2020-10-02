@@ -14,7 +14,7 @@ namespace EduX_Proj.Controllers
     [ApiController]
     public class TurmasController : ControllerBase
     {
-        private readonly ITurma _turma;
+        private readonly TurmaRepository _turma;
 
         public TurmasController()
         {
