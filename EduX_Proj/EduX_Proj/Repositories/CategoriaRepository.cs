@@ -4,7 +4,6 @@ using EduX_Proj.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace EduX_Proj.Repositories
 {
@@ -21,7 +20,7 @@ namespace EduX_Proj.Repositories
         /// Cadastra uma nova Categoria.
         /// </summary>
         /// <param name="cat"></param>
-        public void Adicionar(Categoria cat)
+        public void Cadastrar(Categoria cat)
         {
             _ctx.Categoria.Add(cat);
             _ctx.SaveChanges();
@@ -65,21 +64,6 @@ namespace EduX_Proj.Repositories
             }
         }
 
-        public Categoria BuscarPorID(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Cadastrar(Categoria cat)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Excluir(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Lista todas as categorias já cadastradas no banco.
         /// </summary>
@@ -100,7 +84,7 @@ namespace EduX_Proj.Repositories
         /// Remove uma categoria do banco a partir do seu id
         /// </summary>
         /// <param name="id"></param>
-        public void Remover(int id)
+        public void Excluir(int id)
         {
             try
             {

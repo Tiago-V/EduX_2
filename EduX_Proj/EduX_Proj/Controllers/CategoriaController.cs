@@ -1,16 +1,9 @@
-﻿using Amazon.DynamoDBv2.Model;
+﻿using System;
 using EduX_Proj.Domains;
 using EduX_Proj.Interfaces;
 using EduX_Proj.Repositories;
-using Google.Protobuf.WellKnownTypes;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace EduX_Proj.Controllers
 {
@@ -18,7 +11,7 @@ namespace EduX_Proj.Controllers
     [ApiController]
     public class CategoriaController : ControllerBase
     {
-        private readonly CategoriaRepository _categoria;
+        private readonly ICategoria _categoria;
 
         public CategoriaController()
         {
@@ -29,7 +22,7 @@ namespace EduX_Proj.Controllers
         /// Lista das Categorias
         /// </summary>
         /// <returns>Lista as Categorias</returns>
-
+        // GET api/Categoria
         [HttpGet]
         public IActionResult Get()
         {
@@ -39,6 +32,7 @@ namespace EduX_Proj.Controllers
 
                 if (categorias.Count == 0)
                     return NoContent();
+
                 return Ok(categorias);
             }
             catch (Exception ex)
@@ -53,15 +47,17 @@ namespace EduX_Proj.Controllers
         /// <param name="id">Id Categoria</param>
         /// <returns>Categoria</returns>
 
-        // GET api/<CategoriaController>/5
-        [HttpGet]
+        // GET api/Categoria/5
+        [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             try
             {
-                Categoria categoria = _categoria.BuscarPorID(id);
+                Categoria categoria = _categoria.BuscarPorId(id);
+
                 if (categoria == null)
                     return NotFound();
+
                 return Ok(categoria);
             }
             catch (Exception ex)
@@ -76,7 +72,7 @@ namespace EduX_Proj.Controllers
         /// <param name="cat">Categoria</param>
         /// <returns>Status: Ok</returns>
 
-        // POST api/<CategoriaController>
+        // POST api/Categoria
         [HttpPost]
         public IActionResult Post(Categoria cat)
         {
@@ -99,7 +95,7 @@ namespace EduX_Proj.Controllers
         /// <param name="cat">Categoria</param>
         /// <returns>Status: Ok</returns>
 
-        // PUT api/<CategoriaController>/5
+        // PUT api/Categoria/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, Categoria cat)
         {
@@ -121,13 +117,13 @@ namespace EduX_Proj.Controllers
         /// <param name="id"></param>
         /// <returns>Status: Ok</returns>
 
-        // DELETE api/<CategoriaController>/5
+        // DELETE api/Categoria/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             try
             {
-                var categoria = _categoria.BuscarPorID(id);
+                var categoria = _categoria.BuscarPorId(id);
 
                 if (categoria == null)
                     return NotFound();
