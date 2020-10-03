@@ -26,7 +26,7 @@ namespace EduX_Proj.Controllers
         }
 
         /// <summary>
-        /// Listar todos os usuarios
+        /// Lista todos os usuarios
         /// </summary>
         /// <returns> Lista de usuarios </returns>
         //GET: api/Usuario
@@ -49,9 +49,9 @@ namespace EduX_Proj.Controllers
         }
 
         /// <summary>
-        /// Buscar usuario pelo seu id
+        /// Busca usuario pelo seu id
         /// </summary>
-        /// <param name="id"> Id dao usuario </param>
+        /// <param name="id"> Id do usuario </param>
         /// <returns> Usuario </returns>
         // GET: api/Usuario/1
         [HttpGet("{id}")]

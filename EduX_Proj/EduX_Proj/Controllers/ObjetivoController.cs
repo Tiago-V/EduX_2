@@ -20,6 +20,10 @@ namespace EduX_Proj.Controllers
             _objetivoRepository = new ObjetivoRepository();
         }
 
+        /// <summary>
+        /// Lista todos os objetivos.
+        /// </summary>
+        /// <returns>Objetivos.</returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -39,6 +43,12 @@ namespace EduX_Proj.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Busca um objetivo a partir do seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Objetivo buscado.</returns>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -58,6 +68,13 @@ namespace EduX_Proj.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Altera um objetivo a partir do seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="objetivo"></param>
+        /// <returns>Objetivo alterado.</returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, Objetivo objetivo)
         {
@@ -75,6 +92,11 @@ namespace EduX_Proj.Controllers
             }
         }
 
+        /// <summary>
+        /// Cadastra um objetivo no banco de dados.
+        /// </summary>
+        /// <param name="objetivo"></param>
+        /// <returns>Objetivo cadastrado</returns>
         [HttpPost]
         public IActionResult Post([FromForm] Objetivo objetivo)
         {
@@ -90,6 +112,12 @@ namespace EduX_Proj.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Excluí um objetivo já cadastrado no banco a partir do seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Objetivo excluído</returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
