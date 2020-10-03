@@ -18,11 +18,11 @@ namespace EduX_Proj.Controllers
             _alunoTurma = new AlunoTurmaRepository();
         }
 
+        //GET: api/AlunoTurma
         /// <summary>
         /// Listar todos os alunos
         /// </summary>
         /// <returns> Lista de alunos </returns>
-        //GET: api/AlunoTurma
         [HttpGet]
         public IActionResult Get()
         {
@@ -41,12 +41,12 @@ namespace EduX_Proj.Controllers
             }
         }
 
+        // GET: api/AlunoTurma/1
         /// <summary>
         /// Buscar aluno pelo seu id
         /// </summary>
         /// <param name="id"> Id do Aluno </param>
         /// <returns> Aluno </returns>
-        // GET: api/AlunoTurma/1
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -66,12 +66,12 @@ namespace EduX_Proj.Controllers
         }
 
 
+        // POST: api/AlunoTurma
         /// <summary>
         /// Adicionar um aluno
         /// </summary>
         /// <param name="a"> Aluno </param>
         /// <returns> Status Ok e Aluno </returns>
-        // POST: api/AlunoTurma
         [HttpPost]
         public IActionResult Post(AlunoTurma a)
         {
@@ -87,13 +87,13 @@ namespace EduX_Proj.Controllers
             }
         }
 
+        // PUT: api/AlunoTurma/1
         /// <summary>
         /// Alterar os atributos de aluno
         /// </summary>
         /// <param name="id"> Id do aluno que terá seus atributos alterados </param>
         /// <param name="a"> Aluno </param>
         /// <returns> Status Ok e Aluno </returns>
-        // PUT: api/AlunoTurma/1
         [HttpPut("{id}")]
         public IActionResult Put(int id, AlunoTurma a)
         {
@@ -109,12 +109,12 @@ namespace EduX_Proj.Controllers
             }
         }
 
+        // DELETE: api/AlunoTurma/1
         /// <summary>
         /// Remover aluno
         /// </summary>
         /// <param name="id"> Id do Aluno que sera removido </param>
         /// <returns> Status Ok </returns>
-        // DELETE: api/AlunoTurma/1
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
