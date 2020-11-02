@@ -246,10 +246,6 @@ namespace EduX_Proj.Contexts
                 entity.HasKey(e => e.IdUsuario)
                     .HasName("PK__Usuario__5B65BF973D8C25C6");
 
-                entity.Property(e => e.DataCadastro).HasColumnType("datetime");
-
-                entity.Property(e => e.DataUltimoAcesso).HasColumnType("datetime");
-
                 entity.Property(e => e.Email)
                     .HasMaxLength(100)
                     .IsUnicode(false);

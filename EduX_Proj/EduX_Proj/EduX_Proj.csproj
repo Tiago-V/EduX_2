@@ -5,6 +5,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Migrations\20201102031947_AlterTableUsuario.cs" />
+	  <Compile Remove="Migrations\20201102031947_AlterTableUsuario.Designer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Folder Include="Utils\" />
 	</ItemGroup>
 

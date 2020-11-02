@@ -41,8 +41,6 @@ namespace EduX_Proj.Repositories
                 usuario.Nome             = u.Nome;
                 usuario.Email            = u.Email;
                 usuario.Senha            = u.Senha;
-                usuario.DataCadastro     = u.DataCadastro;
-                usuario.DataUltimoAcesso = u.DataUltimoAcesso;
 
 
                 _ctx.Usuario.Update(usuario);
