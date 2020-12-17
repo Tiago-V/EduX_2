@@ -20,7 +20,7 @@ namespace EduX_Proj.Utils
 
             file.CopyTo(streamImagem);
 
-            return "https://192.168.15.15:5000/upload/imagens" + nomeArquivo;
+            return "https://192.168.15.15:5000/upload/imagens/" + nomeArquivo;
         }
 
     }
