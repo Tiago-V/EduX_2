@@ -102,17 +102,10 @@ namespace EduX_Proj.Controllers
         /// <param name="dica"></param>
         /// <returns>Dica cadastrada</returns>
         [HttpPost]
-        public IActionResult Post([FromForm]Dica dica)
+        public IActionResult Post(Dica dica)
         {
             try
             {
-
-                if(dica.Arquivo != null)
-                {
-                    var urlImagem = Upload.Local(dica.Arquivo);
-
-                    dica.Imagem = urlImagem;
-                }
 
                 _dicaRepository.Cadastrar(dica);
 
